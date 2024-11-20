@@ -9,10 +9,10 @@ function App() {
 
  const [postsData, setPostsData] = useState({})
 
-  function handleClick(e){
+  /*function handleClick(e){
 
     fetchData()
-  }
+  }*/
 
   function fetchData (url = 'http://localhost:3001/posts'){
 
@@ -81,9 +81,32 @@ console.log(articles);
   return (
     <>
       <h1>Blog</h1>
-      <button type='button' onClick={handleClick}>Vedi tutte le ricette</button>
+      {/*<button type='button' onClick={handleClick}>Vedi tutte le ricette</button>*/}
 
-      <section className
+      <section className='recipes'>
+        <div className="container">
+          <div
+            class="row justify-content-center align-items-center g-2"
+          >
+            {postsData.data ?
+            postsData.data.map(post =>(
+              <div class="col" key={post.slug}>
+                <div className="card">
+                  <img src={post.image} alt =''/>
+                  <h1>{post.title}</h1>
+                  <p>
+                    {post.content}
+                  </p>
+                </div>
+              </div>
+            )): <p>No reslts yet</p>} 
+            
+            
+          </div>
+          
+        </div>
+
+      </section>
       {/*<div className='container'>
       <h2>Your Articles</h2>
 

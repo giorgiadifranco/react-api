@@ -1,10 +1,6 @@
-## Esercizio
+## REACT-API
 
-Creare un semplice form con un campo input per il titolo di un articolo del blog.
+L'applicazione con react sviluppata nei giorni scorsi al momento usa dati statici e non un'API! É il momento perfetto per fare questo switch!
 
-Al submit del form, mostrare la lista degli articoli inseriti, con la possibilità di cancellare ciascun articolo utilizzando un'icona.
-
-## BONUS
-
-Implementare la funzionalità di modifica del titolo di un post.
-Aggiungere più campi al form (ad es. lo stato di un articolo - draft, published - o l’autore)
+Partendo dall'esercizio precedente (il blog), integriamo le API che abbiamo sviluppato durante il modulo su ExpressJS.
+Al caricamento dell'applicazione, sfruttando l'hook useEffect, recuperiamo la lista dei post dal backend (il nostro server API) e la mostriamo in pagina.
