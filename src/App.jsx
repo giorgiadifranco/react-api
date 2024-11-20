@@ -1,21 +1,33 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 import './App.css'
 
-const initialFormArticles = {
-  title: '',
-  image: '',
-  content: '',
-  category: '',
-  tags: [],
-  published: false,
-}
+
 
 function App() {
 
-  const [articles, setArticles] = useState(initialFormArticles)
+ const [postsData, setPostsData] = useState({})
 
-  const [newArticle, setNewArticle] = useState ([])
+  function handleClick(e){
+
+    fetchData()
+  }
+
+  function fetchData (url = 'http://localhost:3001/posts'){
+
+    fetch(url)
+    .then(resp =>resp.json())
+    .then(data =>{
+      console.log(data);
+      setPostsData(data)
+      
+    })
+  }
+
+  useEffect(fetchData, [])
+
+
 
   function handleFormSubmit(e){
     e.preventDefault()
@@ -68,8 +80,11 @@ console.log(articles);
 
   return (
     <>
-    
-      <div className='container'>
+      <h1>Blog</h1>
+      <button type='button' onClick={handleClick}>Vedi tutte le ricette</button>
+
+      <section className
+      {/*<div className='container'>
       <h2>Your Articles</h2>
 
       
@@ -117,7 +132,7 @@ console.log(articles);
           <label htmlFor="formId1">Category</label>
         </div>
         
-        {/*         button     */}
+       
         <button className="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
 
         <p className="list-titles">List titles</p>
@@ -133,7 +148,7 @@ console.log(articles);
 
               </li>)} 
         </ul>   
-      </div>
+      </div>*/}
       
     </>
   )
